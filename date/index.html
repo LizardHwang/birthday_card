@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>생일 데이트 이미지 카드</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --radius: 24px;
+      --shadow: 0 10px 30px rgba(0,0,0,.14);
+      --fg: #111;
+      --sub: #555;
+      --badge: #ff64a0;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; padding:40px; font-family:'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#f7f7f9; color:var(--fg)}
+
+    /* 헤더 영역 수정: 가운데 정렬 + 제목/부제 스타일 */
+    .header{
+      max-width:1200px; margin:0 auto 28px;
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      text-align:center;
+    }
+    .header h1{margin:0; font-size:36px; font-weight:800;}
+    .subtitle{margin:0; font-size:16px; color:#777;}
+
+    .cards{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .card{position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#000;}
+    /* 인스타 4:5 비율 (1080x1350 권장) */
+    .card .frame{aspect-ratio:4/5; position:relative;}
+    .cover{position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(1.02);}
+    .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.6) 100%);} 
+    .body{position:absolute; left:0; right:0; bottom:0; padding:22px 22px 20px; color:#fff;}
+    .badge{display:inline-block; background:var(--badge); color:#fff; font-weight:700; font-size:12px; padding:6px 10px; border-radius:999px; letter-spacing:.4px;}
+    .title{margin:10px 0 4px; font-size:22px; font-weight:800; line-height:1.25}
+    .sub{margin:0 0 10px; font-size:14px; opacity:.95}
+    .points{margin:0; padding:0; list-style:none; font-size:15px; line-height:1.6}
+    .points li{display:flex; gap:8px; align-items:flex-start}
+    .points li::before{content:"•"; opacity:.9}
+
+    /* 반응형 */
+    @media (max-width:1024px){ .cards{grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:640px){
+      body{padding:20px}
+      .cards{grid-template-columns:1fr;}
+      .header h1{font-size:28px;}
+      .subtitle{font-size:14px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더: 제목/부제 교체 -->
+  <div class="header">
+    <h1>🎂 태인이의 생일코스~! ✨</h1>
+    <p class="subtitle">원하는 코스를 골라줘♡</p>
+  </div>
+
+  <section class="cards">
+    <!-- 1) 야구 코스 -->
+    <article class="card" style="--cover:url('./assets/card-baseball.png')">
+      <div class="frame">
+        <div class="cover" style="background-image:var(--cover)"></div>
+        <div class="overlay"></div>
+        <div class="body">
+          <span class="badge">HAPPY BIRTHDAY</span>
+          <h3 class="title">⚾ 야구 코스</h3>
+          <p class="sub">롯데랑 전쟁이야~! ☆5시경기☆</p>
+          <ul class="points">
+            <li>꿀잼 경기와 맛있는 간식✨</li>
+            <li>지면 화날 수 있음 주의 ㅎㅎ</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2) 파라다이스 씨메르 코스 -->
+    <article class="card" style="--cover:url('./assets/card-cimer.png')">
+      <div class="frame">
+        <div class="cover" style="background-image:var(--cover)"></div>
+        <div class="overlay"></div>
+        <div class="body">
+          <span class="badge">HAPPY BIRTHDAY</span>
+          <h3 class="title">🏖 파라다이스 씨메르 코스</h3>
+          <p class="sub">여름의 마지막을 시원하게 ❄️</p>
+          <ul class="points">
+            <li>스파 · 풀 · 찜질방 까지!!</li>
+            <li>신나게 물놀이하고 힐링</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3) 영종도 레일바이크 + 하늘공원 -->
+    <article class="card" style="--cover:url('assets/card-yeongjong.png')">
+      <div class="frame">
+        <div class="cover" style="background-image:var(--cover)"></div>
+        <div class="overlay"></div>
+        <div class="body">
+          <span class="badge">HAPPY BIRTHDAY</span>
+          <h3 class="title">🚲 레일바이크 & 하늘공원 코스</h3>
+          <p class="sub">바다뷰 + 석양뷰 + 비행기 ✈️</p>
+          <ul class="points">
+            <li>바닷바람 맞으며 바이크 타기~!!</li>
+            <li>낭만 가득 산책</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+</body>
+</html>
